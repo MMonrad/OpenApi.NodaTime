@@ -1,0 +1,26 @@
+name: Build
+
+on: [push]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: |
+            9.x
+            
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Cache ~/.nuget/packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-${{ hashFiles('**/*.csproj') }}
+
+    - name: Build Solution
+      run: ./build.sh compile --Configuration Release

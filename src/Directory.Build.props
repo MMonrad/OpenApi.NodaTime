@@ -1,0 +1,40 @@
+<Project>
+    <PropertyGroup>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <NoWarn>$(NoWarn);S6602;S2857;1591;S2629</NoWarn>
+        <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU3042</WarningsNotAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageProjectUrl>https://github.com/MMonrad/OpenApi.NodaTime</PackageProjectUrl>
+        <Copyright>Copyright (c) Mads Larsen $([System.DateTime]::Now.ToString(yyyy))</Copyright>
+        <Description>One Global Monitoring System</Description>
+        <Authors>Mads Larsen</Authors>
+        <Owners>Mads Larsen</Owners>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.CLSCompliantAttribute">
+            <_Parameter1>false</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <NuGetAudit>true</NuGetAudit>
+        <NuGetAuditLevel>low</NuGetAuditLevel>
+        <NuGetAuditMode>all</NuGetAuditMode>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="IDisposableAnalyzers" Version="[4.0.8]" PrivateAssets="all"/>
+        <PackageReference Include="SecurityCodeScan.VS2019" Version="[5.6.7]" PrivateAssets="all"/>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="[10.3.0.106239]" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="[9.0.0]" PrivateAssets="all"/>
+    </ItemGroup>
+
+
+</Project>

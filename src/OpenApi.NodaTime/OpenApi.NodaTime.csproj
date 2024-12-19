@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+        <NoWarn>$(NoWarn)</NoWarn>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\OpenApi.Extensions\OpenApi.Extensions.csproj" />
+    </ItemGroup>
+    
+</Project>

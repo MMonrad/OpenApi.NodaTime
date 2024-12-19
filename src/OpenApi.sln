@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi.NodaTime", "OpenApi.NodaTime\OpenApi.NodaTime.csproj", "{8B37D51E-C27A-437B-AABF-EA7AE5F846FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi.Extensions", "OpenApi.Extensions\OpenApi.Extensions.csproj", "{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2AFAC523-AA1E-49BE-B870-1BF7DF10ED08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{B5F0C119-E51D-42AB-97D7-1C3A4E1C185B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5F0C119-E51D-42AB-97D7-1C3A4E1C185B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F0C119-E51D-42AB-97D7-1C3A4E1C185B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B37D51E-C27A-437B-AABF-EA7AE5F846FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B37D51E-C27A-437B-AABF-EA7AE5F846FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B37D51E-C27A-437B-AABF-EA7AE5F846FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B37D51E-C27A-437B-AABF-EA7AE5F846FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B5F0C119-E51D-42AB-97D7-1C3A4E1C185B} = {2AFAC523-AA1E-49BE-B870-1BF7DF10ED08}
+	EndGlobalSection
+EndGlobal
