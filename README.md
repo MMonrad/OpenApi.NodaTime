@@ -48,3 +48,19 @@ Allows to configure Asp.Net Core and OpenApi to use NodaTime types.
 ```
 dotnet add package MMonrad.OpenApi.NodaTime
 ```
+
+### Type mappings
+
+| **NodaTime Type**       | **OpenAPI Type** | **OpenAPI Format** | **Description**                                                                                     | **Example**               |
+|--------------------------|------------------|---------------------|-----------------------------------------------------------------------------------------------------|---------------------------|
+| **Instant**              | `string`         | `date-time`         | Represents an instant in time (UTC) without time zone information.                                  | `2023-12-21T15:30:00Z`   |
+| **LocalDateTime**        | `string`         | `date-time`         | A date and time without a time zone.                                                               | `2023-12-21T15:30:00`    |
+| **LocalDate**            | `string`         | `date`              | A date without a time component or time zone.                                                      | `2023-12-21`             |
+| **LocalTime**            | `string`         | `time`              | A time without a date or time zone.                                                                | `15:30:00`               |
+| **OffsetDateTime**       | `string`         | `date-time`         | A date and time with an offset from UTC, but without a specific time zone.                         | `2023-12-21T15:30:00+01:00` |
+| **OffsetTime**           | `string`         | `time`              | A time with an offset from UTC, but without a specific date.                                        | `15:30:00+01:00`         |
+| **ZonedDateTime**        | `string`         | `date-time`         | A date and time with a time zone. Often used for scheduling and calendaring.                       | `2023-12-21T15:30:00+01:00[Europe/London]` |
+| **Period**               | `string`         | `duration`          | An ISO 8601 duration representing an elapsed time.                                                 | `P1Y2M10DT2H30M`         |
+| **Duration**             | `string`         | `duration`          | An elapsed time measured in nanoseconds, mapped to ISO 8601 duration.                              | `PT2H30M`                |
+| **Interval**             | `object`         | -                   | Represents a time interval between two `Instant` values, expressed with `start` and `end`.          | `{ "start": "2023-12-21T10:00:00Z", "end": "2023-12-21T15:30:00Z" }` |
+| **DateInterval**         | `object`         | -                   | A date interval between two `LocalDate` values, expressed with `start` and `end`.                  | `{ "start": "2023-12-20", "end": "2023-12-25" }` |
