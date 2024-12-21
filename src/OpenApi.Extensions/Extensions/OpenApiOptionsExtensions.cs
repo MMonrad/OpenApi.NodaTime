@@ -95,6 +95,39 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Provide specific server information to include in the generated Swagger document
+    /// </summary>
+    /// <param name="options"></param>
+    /// <param name="server">A url of the server</param>
+    /// <param name="description">A description of the server</param>
+    public static OpenApiOptions AddServer(this OpenApiOptions options, string server, string? description = null)
+    {
+        options.AddDocumentTransformer((document, _, _) =>
+        {
+            document.Servers.Add(new OpenApiServer
+            {
+                Url = server,
+                Description = description
+            });
+
+            return Task.CompletedTask;
+        });
+
+        return options;
+    }
+
+    /// <summary>
+    /// Provide specific server information to include in the generated Swagger document
+    /// </summary>
+    /// <param name="options"></param>
+    /// <param name="server">A url of the server</param>
+    /// <param name="description">A description of the server</param>
+    public static OpenApiOptions AddServer(this OpenApiOptions options, Uri server, string? description = null)
+    {
+        return options.AddServer(server.ToString(), description);
+    }
+
     public static OpenApiOptions AddType<TConcrete>(this OpenApiOptions options, JsonSerializerOptions? jsonSerializerOptions = null)
     {
         jsonSerializerOptions ??= new JsonSerializerOptions();
