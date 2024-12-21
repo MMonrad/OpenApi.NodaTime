@@ -44,7 +44,7 @@ public class IntervalSchemaTransformer : IOpenApiSchemaTransformer
                                     {
                                         Type = "string",
                                         Format = "date-time",
-                                        Example = new OpenApiString(JsonSerializer.Serialize(interval.Start, _jsonSerializerOptions))
+                                        Example = new OpenApiString(FormatJson(interval.Start))
                                     }
                                 },
                                 {
@@ -53,11 +53,22 @@ public class IntervalSchemaTransformer : IOpenApiSchemaTransformer
                                     {
                                         Type = "string",
                                         Format = "date-time",
-                                        Example = new OpenApiString(JsonSerializer.Serialize(interval.End, _jsonSerializerOptions))
+                                        Example = new OpenApiString(FormatJson(interval.End))
                                     }
                                 }
                             };
 
         return Task.CompletedTask;
+    }
+
+    private string FormatJson(Instant obj)
+    {
+        var formatToJson = JsonSerializer.Serialize(obj, _jsonSerializerOptions);
+        if (formatToJson.StartsWith('"') && formatToJson.EndsWith('"'))
+        {
+            formatToJson = formatToJson.Substring(1, formatToJson.Length - 2);
+        }
+
+        return formatToJson;
     }
 }

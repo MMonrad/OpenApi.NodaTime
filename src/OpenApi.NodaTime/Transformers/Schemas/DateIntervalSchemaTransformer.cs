@@ -42,7 +42,7 @@ public class DateIntervalSchemaTransformer : IOpenApiSchemaTransformer
                                     {
                                         Type = "string",
                                         Format = "date",
-                                        Example = new OpenApiString(JsonSerializer.Serialize(dateInterval.Start, _jsonSerializerOptions))
+                                        Example = new OpenApiString(FormatJson(dateInterval.Start))
                                     }
                                 },
                                 {
@@ -51,11 +51,22 @@ public class DateIntervalSchemaTransformer : IOpenApiSchemaTransformer
                                     {
                                         Type = "string",
                                         Format = "date",
-                                        Example = new OpenApiString(JsonSerializer.Serialize(dateInterval.End, _jsonSerializerOptions))
+                                        Example = new OpenApiString(FormatJson(dateInterval.End))
                                     }
                                 }
                             };
 
         return Task.CompletedTask;
+    }
+
+    private string FormatJson(LocalDate obj)
+    {
+        var formatToJson = JsonSerializer.Serialize(obj, _jsonSerializerOptions);
+        if (formatToJson.StartsWith('"') && formatToJson.EndsWith('"'))
+        {
+            formatToJson = formatToJson.Substring(1, formatToJson.Length - 2);
+        }
+
+        return formatToJson;
     }
 }

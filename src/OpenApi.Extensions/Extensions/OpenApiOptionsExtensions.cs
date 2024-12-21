@@ -20,7 +20,7 @@ public static class OpenApiOptionsExtensions
             }
 
             schema.Type = typeof(TConcrete).Name;
-            schema.Example = new OpenApiString(JsonSerializer.Serialize(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
+            schema.Example = new OpenApiString(FormatJson(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
 
             return Task.CompletedTask;
         });
@@ -40,7 +40,7 @@ public static class OpenApiOptionsExtensions
             }
 
             schema.Type = typeof(TType).Name;
-            schema.Example = new OpenApiString(JsonSerializer.Serialize(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
+            schema.Example = new OpenApiString(FormatJson(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
 
             return Task.CompletedTask;
         });
@@ -61,7 +61,7 @@ public static class OpenApiOptionsExtensions
 
             schema.Type = typeof(TConcrete).Name;
             schema.Format = format;
-            schema.Description = JsonSerializer.Serialize(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions);
+            schema.Description = FormatJson(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions);
 
             return Task.CompletedTask;
         });
@@ -82,7 +82,7 @@ public static class OpenApiOptionsExtensions
 
             schema.Type = typeof(TType).Name;
             schema.Format = format;
-            schema.Example = new OpenApiString(JsonSerializer.Serialize(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
+            schema.Example = new OpenApiString(FormatJson(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
 
             return Task.CompletedTask;
         });
@@ -106,7 +106,7 @@ public static class OpenApiOptionsExtensions
 
             schema.Type = typeof(TConcrete).Name;
             schema.Format = format;
-            schema.Example = new OpenApiString(JsonSerializer.Serialize(example, jsonSerializerOptions));
+            schema.Example = new OpenApiString(FormatJson(example, jsonSerializerOptions));
 
             return Task.CompletedTask;
         });
@@ -130,7 +130,7 @@ public static class OpenApiOptionsExtensions
 
             schema.Type = typeof(TType).Name;
             schema.Format = format;
-            schema.Example = new OpenApiString(JsonSerializer.Serialize(example, jsonSerializerOptions));
+            schema.Example = new OpenApiString(FormatJson(example, jsonSerializerOptions));
 
             return Task.CompletedTask;
         });
@@ -152,11 +152,22 @@ public static class OpenApiOptionsExtensions
             }
 
             schema.Type = typeof(TType).Name;
-            schema.Example = new OpenApiString(JsonSerializer.Serialize(example, jsonSerializerOptions));
+            schema.Example = new OpenApiString(FormatJson(example, jsonSerializerOptions));
 
             return Task.CompletedTask;
         });
 
         return options;
+    }
+
+    private static string FormatJson<T>(T obj, JsonSerializerOptions? jsonSerializerOptions)
+    {
+        var formatToJson = JsonSerializer.Serialize(obj, jsonSerializerOptions);
+        if (formatToJson.StartsWith('"') && formatToJson.EndsWith('"'))
+        {
+            formatToJson = formatToJson.Substring(1, formatToJson.Length - 2);
+        }
+
+        return formatToJson;
     }
 }
