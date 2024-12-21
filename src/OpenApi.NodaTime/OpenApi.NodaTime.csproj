@@ -6,6 +6,7 @@
         <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
         <NoWarn>$(NoWarn)</NoWarn>
         <PackageTags>Open Api;Extensions;NodaTime</PackageTags>
+        <PackageId>MMonrad.$(AssemblyName)</PackageId>
     </PropertyGroup>
     
     <ItemGroup>
