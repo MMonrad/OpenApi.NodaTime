@@ -25,7 +25,7 @@ public class DateIntervalSchemaTransformer : IOpenApiSchemaTransformer
 
     public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
     {
-        if (context.JsonTypeInfo.Type != typeof(Interval))
+        if (context.JsonTypeInfo.Type != typeof(DateInterval))
         {
             return Task.CompletedTask;
         }

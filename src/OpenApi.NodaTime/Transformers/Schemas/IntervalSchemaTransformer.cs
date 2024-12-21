@@ -23,6 +23,11 @@ public class IntervalSchemaTransformer : IOpenApiSchemaTransformer
 
     public Task TransformAsync(OpenApiSchema schema, OpenApiSchemaTransformerContext context, CancellationToken cancellationToken)
     {
+        if (context.JsonTypeInfo.Type != typeof(Interval))
+        {
+            return Task.CompletedTask;
+        }
+
         var interval = new Interval(_instant,
                                     _instant.PlusTicks(TimeSpan.TicksPerDay)
                                             .PlusTicks(TimeSpan.TicksPerHour)
