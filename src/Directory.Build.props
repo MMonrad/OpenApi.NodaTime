@@ -11,8 +11,9 @@
 
     <PropertyGroup>
         <PackageProjectUrl>https://github.com/MMonrad/OpenApi.NodaTime</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Copyright (c) Mads Larsen $([System.DateTime]::Now.ToString(yyyy))</Copyright>
-        <Description>One Global Monitoring System</Description>
+        <Description>Extensions for OpenApi</Description>
         <Authors>Mads Larsen</Authors>
         <Owners>Mads Larsen</Owners>
         <PackageReadmeFile>README.md</PackageReadmeFile>
