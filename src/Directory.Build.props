@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageProjectUrl>https://github.com/MMonrad/OpenApi.NodaTime</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/MMonrad/OpenApi.Extensions</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Copyright (c) Mads Larsen $([System.DateTime]::Now.ToString(yyyy))</Copyright>
         <Description>Extensions for OpenApi</Description>
