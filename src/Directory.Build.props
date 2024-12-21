@@ -15,6 +15,10 @@
         <Description>One Global Monitoring System</Description>
         <Authors>Mads Larsen</Authors>
         <Owners>Mads Larsen</Owners>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>Icon.png</PackageIcon>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
     <ItemGroup>
@@ -36,5 +40,8 @@
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="[9.0.0]" PrivateAssets="all"/>
     </ItemGroup>
 
-
+    <ItemGroup>
+        <None Include="$(SolutionDir)/../Icon.png" Pack="true" PackagePath="\"/>
+        <None Include="$(SolutionDir)../README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>

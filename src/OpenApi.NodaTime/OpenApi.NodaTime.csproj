@@ -5,11 +5,12 @@
         <Nullable>enable</Nullable>
         <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
         <NoWarn>$(NoWarn)</NoWarn>
+        <PackageTags>Open Api;Extensions;NodaTime</PackageTags>
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+        <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="[1.2.0,)" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="[9.0.0,)"/>
     </ItemGroup>
     
     <ItemGroup>

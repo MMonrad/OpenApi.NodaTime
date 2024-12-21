@@ -15,7 +15,7 @@ public static class OpenApiOptionsExtensions
                                                    JsonSerializerOptions? jsonSerializerOptions = null)
     {
         dateTimeZoneProvider ??= DateTimeZoneProviders.Tzdb;
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
         jsonSerializerOptions = jsonSerializerOptions.ConfigureForNodaTime(dateTimeZoneProvider);
 
         var instant = Instant.FromDateTimeOffset(DateTimeOffset.Now);

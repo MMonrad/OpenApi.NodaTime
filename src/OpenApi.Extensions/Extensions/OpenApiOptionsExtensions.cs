@@ -10,7 +10,7 @@ public static class OpenApiOptionsExtensions
 {
     public static OpenApiOptions AddType<TConcrete>(this OpenApiOptions options, JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
@@ -30,7 +30,7 @@ public static class OpenApiOptionsExtensions
 
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options, JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
@@ -50,7 +50,7 @@ public static class OpenApiOptionsExtensions
 
     public static OpenApiOptions AddType<TConcrete>(this OpenApiOptions options, string format, JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
@@ -71,7 +71,7 @@ public static class OpenApiOptionsExtensions
 
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options, string format, JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
@@ -95,7 +95,7 @@ public static class OpenApiOptionsExtensions
         TConcrete example,
         JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
@@ -119,7 +119,7 @@ public static class OpenApiOptionsExtensions
         TConcrete example,
         JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
@@ -142,7 +142,7 @@ public static class OpenApiOptionsExtensions
         TConcrete example,
         JsonSerializerOptions? jsonSerializerOptions = null)
     {
-        jsonSerializerOptions ??= JsonSerializerOptions.Web;
+        jsonSerializerOptions ??= new JsonSerializerOptions();
 
         options.AddSchemaTransformer((schema, context, _) =>
         {
