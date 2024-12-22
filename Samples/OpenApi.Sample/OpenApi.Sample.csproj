@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+        <PackageReference Include="Scalar.AspNetCore" Version="1.2.68" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\OpenApi.Extensions\OpenApi.Extensions.csproj" />
+      <ProjectReference Include="..\..\src\OpenApi.NodaTime\OpenApi.NodaTime.csproj" />
+    </ItemGroup>
+
+</Project>

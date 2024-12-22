@@ -8,6 +8,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2AFAC523
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{B5F0C119-E51D-42AB-97D7-1C3A4E1C185B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{0A76DBB2-5DB9-40DD-ADAD-602E02BAC12E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi.Sample", "..\Samples\OpenApi.Sample\OpenApi.Sample.csproj", "{714E29D6-3EDB-4F93-9CEA-8E798B434537}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,8 +28,13 @@ Global
 		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{614DCA62-0A79-4FF2-92B0-C2E2B7D98C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714E29D6-3EDB-4F93-9CEA-8E798B434537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714E29D6-3EDB-4F93-9CEA-8E798B434537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714E29D6-3EDB-4F93-9CEA-8E798B434537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714E29D6-3EDB-4F93-9CEA-8E798B434537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B5F0C119-E51D-42AB-97D7-1C3A4E1C185B} = {2AFAC523-AA1E-49BE-B870-1BF7DF10ED08}
+		{714E29D6-3EDB-4F93-9CEA-8E798B434537} = {0A76DBB2-5DB9-40DD-ADAD-602E02BAC12E}
 	EndGlobalSection
 EndGlobal

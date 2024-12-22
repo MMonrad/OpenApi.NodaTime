@@ -34,20 +34,20 @@ public static class OpenApiOptionsExtensions
                                             .LocalDateTime,
                                     PeriodUnits.AllUnits);
 
-        options.AddType<Instant, string>("date-time", instant, jsonSerializerOptions);
-        options.AddType<LocalDate, string>("date", zoned.Date, jsonSerializerOptions);
-        options.AddType<LocalTime, string>("time", zoned.TimeOfDay, jsonSerializerOptions);
-        options.AddType<LocalDateTime, string>("date-time", zoned.LocalDateTime, jsonSerializerOptions);
-        options.AddType<OffsetTime, string>("time", offsetTime.ToOffsetTime(), jsonSerializerOptions);
-        options.AddType<OffsetDate, string>("date", offsetTime.ToOffsetDate(), jsonSerializerOptions);
-        options.AddType<OffsetDateTime, string>("date-time", offsetTime, jsonSerializerOptions);
-        options.AddType<ZonedDateTime, string>("date-time", zoned, jsonSerializerOptions);
+        options.AddType<Instant, string>("date-time", instant, null, jsonSerializerOptions);
+        options.AddType<LocalDate, string>("date", zoned.Date, null, jsonSerializerOptions);
+        options.AddType<LocalTime, string>("time", zoned.TimeOfDay, null, jsonSerializerOptions);
+        options.AddType<LocalDateTime, string>("date-time", zoned.LocalDateTime, null, jsonSerializerOptions);
+        options.AddType<OffsetTime, string>("time", offsetTime.ToOffsetTime(), null, jsonSerializerOptions);
+        options.AddType<OffsetDate, string>("date", offsetTime.ToOffsetDate(), null, jsonSerializerOptions);
+        options.AddType<OffsetDateTime, string>("date-time", offsetTime, null, jsonSerializerOptions);
+        options.AddType<ZonedDateTime, string>("date-time", zoned, null, jsonSerializerOptions);
         options.AddSchemaTransformer(new IntervalSchemaTransformer(instant, jsonSerializerOptions));
         options.AddSchemaTransformer(new DateIntervalSchemaTransformer(instant, dateTimeZoneProvider.GetSystemDefault(), jsonSerializerOptions));
-        options.AddType<Offset, string>(zoned.Offset, jsonSerializerOptions);
-        options.AddType<Period, string>(period, jsonSerializerOptions);
-        options.AddType<Duration, string>("duration", interval.Duration, jsonSerializerOptions);
-        options.AddType<DateTimeZone, string>(dateTimeZoneProvider.GetSystemDefault(), jsonSerializerOptions);
+        options.AddType<Offset, string>(zoned.Offset, null, jsonSerializerOptions);
+        options.AddType<Period, string>(period, null, jsonSerializerOptions);
+        options.AddType<Duration, string>("duration", interval.Duration, null, jsonSerializerOptions);
+        options.AddType<DateTimeZone, string>(dateTimeZoneProvider.GetSystemDefault(), null, jsonSerializerOptions);
 
         return options;
     }
