@@ -34,6 +34,7 @@ public class DateIntervalSchemaTransformer : IOpenApiSchemaTransformer
         var dateInterval = new DateInterval(zoned.Date, zoned.Date.PlusDays(1));
 
         schema.Type = "object";
+        schema.Format = "A date interval between two LocalDate values, expressed with start and end.";
         schema.Properties = new Dictionary<string, OpenApiSchema>
                             {
                                 {

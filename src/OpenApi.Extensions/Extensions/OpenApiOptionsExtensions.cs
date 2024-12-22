@@ -214,7 +214,7 @@ public static class OpenApiOptionsExtensions
 
             schema.Type = typeof(TConcrete).Name;
             schema.Format = format;
-            schema.Description = FormatJson(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions);
+            schema.Example = new OpenApiString(FormatJson(Activator.CreateInstance<TConcrete>(), jsonSerializerOptions));
             schema.Annotations.Clear();
 
             return Task.CompletedTask;
@@ -297,6 +297,7 @@ public static class OpenApiOptionsExtensions
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options,
         string format,
         TConcrete example,
+        string? description = null,
         IDictionary<string, OpenApiSchema>? properties = null,
         JsonSerializerOptions? jsonSerializerOptions = null)
     {
@@ -312,6 +313,7 @@ public static class OpenApiOptionsExtensions
             schema.Type = typeof(TType).Name;
             schema.Format = format;
             schema.Example = new OpenApiString(FormatJson(example, jsonSerializerOptions));
+            schema.Description = description;
             schema.Properties = properties ?? new Dictionary<string, OpenApiSchema>();
             schema.Annotations.Clear();
 

@@ -36,6 +36,7 @@ public class IntervalSchemaTransformer : IOpenApiSchemaTransformer
                                             .PlusTicks(TimeSpan.TicksPerMillisecond));
 
         schema.Type = "object";
+        schema.Description = "Represents a time interval between two Instant values, expressed with start and end.";
         schema.Properties = new Dictionary<string, OpenApiSchema>
                             {
                                 {
