@@ -28,6 +28,7 @@ using var services = collection.BuildServiceProvider();
 services.AddOpenApi(opt =>
                     {
                         opt.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
+                        opt.AddDescription("This project contains samples on the extensions library OpenApi.Extensions.");
                         opt.ConfigureNodaTime();
                         opt.AddType<CommandRequestId, string>(new CommandRequestId(Guid.Empty));
                     });

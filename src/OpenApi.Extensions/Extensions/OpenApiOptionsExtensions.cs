@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using OpenApi.Extensions.Transformers;
 using OpenApi.Extensions.Transformers.Operations;
 
 namespace OpenApi.Extensions.Extensions;
@@ -16,6 +17,18 @@ namespace OpenApi.Extensions.Extensions;
 /// </summary>
 public static class OpenApiOptionsExtensions
 {
+    /// <summary>
+    /// Adds a document transformer to set a global description for the OpenAPI document.
+    /// </summary>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="description">The description to apply to the OpenAPI document.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
+    public static OpenApiOptions AddDescription(this OpenApiOptions options, string description)
+    {
+        options.AddDocumentTransformer(new DescriptionDocumentTransform(description));
+        return options;
+    }
+
     /// <summary>
     /// Adds the given status code and description to all operations
     /// </summary>
@@ -159,6 +172,13 @@ public static class OpenApiOptionsExtensions
         return options.AddServer(server.ToString(), description);
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete>(this OpenApiOptions options, JsonSerializerOptions? jsonSerializerOptions = null)
     {
         jsonSerializerOptions ??= new JsonSerializerOptions();
@@ -180,6 +200,14 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type, mapping it to another type in the schema.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <typeparam name="TType">The type name to use in the schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options, JsonSerializerOptions? jsonSerializerOptions = null)
     {
         jsonSerializerOptions ??= new JsonSerializerOptions();
@@ -201,6 +229,14 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type with a custom format.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="format">The custom format to apply to the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete>(this OpenApiOptions options, string format, JsonSerializerOptions? jsonSerializerOptions = null)
     {
         jsonSerializerOptions ??= new JsonSerializerOptions();
@@ -223,6 +259,15 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type with a custom format, mapping it to another type in the schema.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <typeparam name="TType">The type name to use in the schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="format">The custom format to apply to the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options, string format, JsonSerializerOptions? jsonSerializerOptions = null)
     {
         jsonSerializerOptions ??= new JsonSerializerOptions();
@@ -245,6 +290,15 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type with a custom format and example.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="format">The custom format to apply to the schema.</param>
+    /// <param name="example">An example value for the type in the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete>(this OpenApiOptions options,
         string format,
         TConcrete example,
@@ -270,6 +324,16 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type with a custom format, mapping it to another type in the schema and providing an example.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <typeparam name="TType">The type name to use in the schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="format">The custom format to apply to the schema.</param>
+    /// <param name="example">An example value for the type in the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options,
         string format,
         TConcrete example,
@@ -294,6 +358,18 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type, mapping it to another type in the schema and providing additional metadata.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <typeparam name="TType">The type name to use in the schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="format">The custom format to apply to the schema.</param>
+    /// <param name="example">An example value for the type in the schema.</param>
+    /// <param name="description">An optional description of the schema.</param>
+    /// <param name="properties">Optional additional properties to include in the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options,
         string format,
         TConcrete example,
@@ -323,6 +399,15 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type, mapping it to another type in the schema.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <typeparam name="TType">The type name to use in the schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="example">An example value for the type in the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options,
         TConcrete example,
         JsonSerializerOptions? jsonSerializerOptions = null)
@@ -346,6 +431,16 @@ public static class OpenApiOptionsExtensions
         return options;
     }
 
+    /// <summary>
+    /// Adds a schema transformer to configure OpenAPI schema for a specific type, mapping it to another type in the schema, and including additional properties.
+    /// </summary>
+    /// <typeparam name="TConcrete">The type to be transformed in the OpenAPI schema.</typeparam>
+    /// <typeparam name="TType">The type name to use in the schema.</typeparam>
+    /// <param name="options">The OpenAPI options to configure.</param>
+    /// <param name="example">An example value for the type in the schema.</param>
+    /// <param name="properties">Optional additional properties to include in the schema.</param>
+    /// <param name="jsonSerializerOptions">Optional JSON serializer options for formatting the schema example.</param>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
     public static OpenApiOptions AddType<TConcrete, TType>(this OpenApiOptions options,
         TConcrete example,
         IDictionary<string, OpenApiSchema>? properties = null,

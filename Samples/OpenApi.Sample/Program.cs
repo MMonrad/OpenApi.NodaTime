@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi(opt =>
 {
+    opt.AddDescription("This project contains samples on the extensions library OpenApi.Extensions.");
     opt.ConfigureNodaTime();
     opt.AddResponseType<ProblemDetails>(HttpStatusCode.BadRequest);
 });
