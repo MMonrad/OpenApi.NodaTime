@@ -11,6 +11,7 @@
 - [Example](#example)
 - [Extensions](#extensions)
 - [NodaTime](#nodatime)
+- [Contributing](#contributing) 
 
 ## Elevator Pitch
 
@@ -65,3 +66,15 @@ dotnet add package MMonrad.OpenApi.NodaTime
 | **Duration**             | `string`         | `duration`          | An elapsed time measured in nanoseconds, mapped to ISO 8601 duration.                              | `PT2H30M`                |
 | **Interval**             | `object`         | -                   | Represents a time interval between two `Instant` values, expressed with `start` and `end`.          | `{ "start": "2023-12-21T10:00:00Z", "end": "2023-12-21T15:30:00Z" }` |
 | **DateInterval**         | `object`         | -                   | A date interval between two `LocalDate` values, expressed with `start` and `end`.                  | `{ "start": "2023-12-20", "end": "2023-12-25" }` |
+
+## Contributing
+If you want to contribute to the project and make it better, your help is very welcome.
+
+### How to make a clean pull request
+
+- Create a personal fork of the project on Github.
+- Create a new branch to work on! Branch from `main`.
+- Implement/fix your feature, comment your code.
+- Follow the code style of the project, including indentation.
+- Add or change the documentation as needed.
+- From your fork open a pull request in the correct branch. Target the project's `main` branch.
