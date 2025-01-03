@@ -23,7 +23,6 @@ Perfect for developers seeking both flexibility and precision in their API solut
 ## Example
 
 ```cs
-
 var collection = new ServiceCollection();
 using var services = collection.BuildServiceProvider();
 services.AddOpenApi(opt =>
@@ -36,6 +35,53 @@ services.AddOpenApi(opt =>
 ```
 
 ## Extensions
+
+### Enrich with XML comments
+XML documentation is often used to make a comprehensive documentation to your API documentation. 
+By using XML comments it is easy to describe various aspects of your code, including methods, properties, parameters, return values, and more. 
+
+To create a detailed documentation using XML comments, you need to enable it in your project. Like shown below:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+    <PackageReference Include="MMonrad.OpenApi.Extensions" Version="0.0.17" />
+  </ItemGroup>
+
+</Project>
+```
+
+After enabling XML Comments you will maybe see a new warning show up `CS1591`, to suppress the warning add this to your csproj file:
+
+```xml
+...
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+...
+```
+
+Lastly add it to your Open Api configuration
+
+```cs
+var collection = new ServiceCollection();
+using var services = collection.BuildServiceProvider();
+services.AddOpenApi(opt =>
+                    {
+                        opt.OpenApiVersion = OpenApiSpecVersion.OpenApi3_0;
+                        opt.ConfigureNodaTime();
+                        opt.AddXmlComments<Module>();
+                    });
+```
 
 ## NodaTime
 Allows to configure Asp.Net Core and OpenApi to use NodaTime types.
