@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using NodaTime;
 using OpenApi.Extensions.Extensions;
 using OpenApi.NodaTime.Extensions;
+using OpenApi.Sample;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddOpenApi(opt =>
 {
     opt.AddDescription("This project contains samples on the extensions library OpenApi.Extensions.");
     opt.ConfigureNodaTime();
+    opt.AddXmlComments<Module>();
     opt.AddResponseType<ProblemDetails>(HttpStatusCode.BadRequest);
 });
 
@@ -54,7 +56,13 @@ app.MapGet("/weatherforecast",
 
 app.Run();
 
+/// <summary>
+/// Shows the weather forecast
+/// </summary>
 internal record WeatherForecast(LocalDate Date, int TemperatureC, string? Summary)
 {
+    /// <summary>
+    /// Uses TemperatureC to calculate TemperatureF
+    /// </summary>
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

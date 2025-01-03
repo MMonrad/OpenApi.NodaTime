@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 
-namespace OpenApi.Extensions.Transformers;
+namespace OpenApi.Extensions.Transformers.Documents;
 
 public class DescriptionDocumentTransform : IOpenApiDocumentTransformer
 {
