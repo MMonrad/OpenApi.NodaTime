@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using OpenApi.Extensions.Transformers;
+using OpenApi.Extensions.Transformers.Documents;
 using OpenApi.Extensions.Transformers.Operations;
+using OpenApi.Extensions.Transformers.Schemas;
 
 namespace OpenApi.Extensions.Extensions;
 
@@ -463,6 +465,31 @@ public static class OpenApiOptionsExtensions
             return Task.CompletedTask;
         });
 
+        return options;
+    }
+
+    /// <summary>
+    /// Loads the assembly and adds XML documentation to the type.
+    /// </summary>
+    /// <typeparam name="T">The assembly type to add XML documentation for.</typeparam>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
+    public static OpenApiOptions AddXmlComments<T>(this OpenApiOptions options)
+        where T : class, new()
+    {
+        options.AddSchemaTransformer<XmlSchemaTransformer<T>>();
+        return options;
+    }
+
+    /// <summary>
+    /// Loads the assembly and adds XML documentation to the type.
+    /// </summary>
+    /// <typeparam name="T">The assembly type to add XML documentation for.</typeparam>
+    /// <returns>The updated <see cref="OpenApiOptions"/> instance.</returns>
+    public static OpenApiOptions AddXmlComments<T>(this OpenApiOptions options,
+        Func<JsonTypeInfo, JsonPropertyInfo?, string?, ValueTask<string?>> onChangeDescription)
+        where T : class, new()
+    {
+        options.AddSchemaTransformer(new XmlSchemaTransformer<T>(onChangeDescription));
         return options;
     }
 
